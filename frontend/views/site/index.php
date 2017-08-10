@@ -1,40 +1,55 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+
 $this->title = 'Sàn chung cư 24h';
 ?>
 <div class="main ovfh">
     <div class="main-banner posr ovfh">
-        <div class="flexslider">
-            <ul class="slides">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
                 <?php if (isset($listBanner) && !empty($listBanner)) {
+                    $i = 0;
                     foreach ($listBanner as $item) {
                         /** @var $item \common\models\Banner */
                         ?>
-                        <li>
+                        <li data-target="#carousel-example-generic" data-slide-to="<?php $i ?>"
+                            class="<?= $i == 0 ? 'active' : '' ?>"></li>
+                        <?php $i++;
+                    }
+                } ?>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <?php if (isset($listBanner) && !empty($listBanner)) {
+                    $i = 0;
+                    foreach ($listBanner as $item) {
+                        /** @var $item \common\models\Banner */
+                        ?>
+                        <div class="item <?= $i == 0 ? 'active' : '' ?>">
                             <img src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>" title="<?= $item->name ?>">
-                        </li>
-                    <?php }
-                } else { ?>
-                    <li>
-                        <img class="img-large" src="images/banners/bn3.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/bn3.jpg" alt="#">
-                    </li>
-                    <li>
-                        <img class="img-large" src="images/banners/bn2.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/bn2.jpg" alt="#">
-                    </li>
-                    <li>
-                        <img class="img-large" src="images/banners/Banner1.jpg" alt="#">
-                        <img class="img-medium" src="images/banners/Banner1.jpg" alt="#">
-                    </li>
-                <?php } ?>
-            </ul>
+                        </div>
+                        <?php $i++;
+                    }
+                } ?>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
     <ul class="main-nav tac">
         <li>
-            <a href="<?= Url::to(['site/news','type'=>\common\models\News::TYPE_TI]); ?>">
+            <a href="<?= Url::to(['site/news', 'type' => \common\models\News::TYPE_TI]); ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -42,7 +57,7 @@ $this->title = 'Sàn chung cư 24h';
                 <img class="posa" src="images/icons/t1.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-1.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/news','type'=>\common\models\News::TYPE_TI]); ?>"><?= Yii::t('app','Tiện ích') ?></a>
+            <a href="<?= Url::to(['site/news', 'type' => \common\models\News::TYPE_TI]); ?>"><?= Yii::t('app', 'Tiện ích') ?></a>
         </li>
         <li>
             <a href="<?= Url::to(['site/distribution']) ?>">
@@ -53,10 +68,10 @@ $this->title = 'Sàn chung cư 24h';
                 <img class="posa" src="images/icons/t2.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-2.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app','Hệ thống phân phối') ?></a>
+            <a href="<?= Url::to(['site/distribution']) ?>"><?= Yii::t('app', 'Hệ thống phân phối') ?></a>
         </li>
         <li>
-            <a href="<?= Url::to(['site/news','type'=> \common\models\News::TYPE_NEWS]) ?>">
+            <a href="<?= Url::to(['site/news', 'type' => \common\models\News::TYPE_NEWS]) ?>">
                 <svg width="80" height="80" style="display: block;">
                     <circle class="circle" cy="40" cx="39" r="38" stroke="#fff" stroke-width="1"
                             fill="transparent"></circle>
@@ -64,7 +79,7 @@ $this->title = 'Sàn chung cư 24h';
                 <img class="posa" src="images/icons/t4.png" alt="#">
                 <img class="posa" src="images/icons/nav-hover-4.png" alt="#">
             </a>
-            <a href="<?= Url::to(['site/news','type'=> \common\models\News::TYPE_NEWS]) ?>"><?= Yii::t('app','Tin tức') ?></a>
+            <a href="<?= Url::to(['site/news', 'type' => \common\models\News::TYPE_NEWS]) ?>"><?= Yii::t('app', 'Tin tức') ?></a>
         </li>
         <li>
             <a href="http://sanchungcu24h.com/#main_da">
@@ -121,7 +136,7 @@ $this->title = 'Sàn chung cư 24h';
         </div>
     </div>
     <div id="main_da"></div>
-    <div  class="main-project main-section">
+    <div class="main-project main-section">
         <div class="main-title tac ttu">
             <h1 class="segoeui">Sanchungcu24h</h1>
             <h2 class="utm-trajan">Dự Án</h2>
@@ -132,7 +147,9 @@ $this->title = 'Sàn chung cư 24h';
 
             <div class="main-project-first container posr ovfh wow fadeIn" data-wow-duration="2s">
                 <div class="project-first-box-left posa">
-                    <h3 class="ttu utm-trajan"><a href="<?= Url::to(['site/detail-news','id'=>$duantop->id]) ?>"><?= $duantop->title ?></a></h3>
+                    <h3 class="ttu utm-trajan"><a
+                                href="<?= Url::to(['site/detail-news', 'id' => $duantop->id]) ?>"><?= $duantop->title ?></a>
+                    </h3>
                     <p class="segoeui"><?= $duantop->short_description ?></p>
                     <img src="images/icons/project-box-bg.png" alt="#" class="posa">
                 </div>
@@ -159,18 +176,19 @@ $this->title = 'Sàn chung cư 24h';
         <div id="main_td"></div>
         <div class="container ovfh">
             <ul class="main-project-list fluid">
-                <?php if(isset($duankhac) && !empty($duankhac)){
-                    foreach($duankhac as $item){
+                <?php if (isset($duankhac) && !empty($duankhac)) {
+                    foreach ($duankhac as $item) {
                         /** @var $item \common\models\News */
                         ?>
                         <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                            <img style="height: 250px;" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>" title="<?= $item->title ?>">
-                            <?php if(!empty($item->title)){ ?>
-                                <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
+                            <img style="height: 250px;" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>"
+                                 title="<?= $item->title ?>">
+                            <?php if (!empty($item->title)) { ?>
+                                <a href="<?= Url::to(['site/detail-news', 'id' => $item->id]) ?>"><?= $item->title ?></a>
                             <?php } ?>
                         </li>
                     <?php }
-                }else{ ?>
+                } else { ?>
                     <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
                         <img src="images/p2.jpg" alt="#"><a href="">Vinpearl<br> Empire Condotel</a>
                     </li>
@@ -185,7 +203,7 @@ $this->title = 'Sàn chung cư 24h';
         </div>
     </div>
     <div class="main-benef main-section">
-        <div id="main_lidt"  class="main-title tac ttu">
+        <div id="main_lidt" class="main-title tac ttu">
             <span class="segoeui">sanchungcu24h</span>
             <h2 class="utm-trajan">Lợi ích đầu tư</h2>
         </div>
@@ -219,6 +237,7 @@ $this->title = 'Sàn chung cư 24h';
             </div>
         </div>
         <div class="tac view-more-page">
-            <a href="<?= Url::toRoute(['site/investment']) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem thêm<span></span></a>
+            <a href="<?= Url::toRoute(['site/investment']) ?>" class="view-more HelveticaiDesignVnlt ttu">Xem
+                thêm<span></span></a>
         </div>
     </div>
