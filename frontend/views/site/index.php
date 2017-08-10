@@ -6,45 +6,28 @@ $this->title = 'Sàn chung cư 24h';
 ?>
 <div class="main ovfh">
     <div class="main-banner posr ovfh">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
+        <div class="flexslider">
+            <ul class="slides">
                 <?php if (isset($listBanner) && !empty($listBanner)) {
-                    $i = 0;
                     foreach ($listBanner as $item) {
                         /** @var $item \common\models\Banner */
                         ?>
-                        <li data-target="#carousel-example-generic" data-slide-to="<?php $i ?>"
-                            class="<?= $i == 0 ? 'active' : '' ?>"></li>
-                        <?php $i++;
-                    }
-                } ?>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <?php if (isset($listBanner) && !empty($listBanner)) {
-                    $i = 0;
-                    foreach ($listBanner as $item) {
-                        /** @var $item \common\models\Banner */
-                        ?>
-                        <div class="item <?= $i == 0 ? 'active' : '' ?>">
+                        <li>
                             <img src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>" title="<?= $item->name ?>">
-                        </div>
-                        <?php $i++;
-                    }
-                } ?>
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                        </li>
+                    <?php }
+                } else { ?>
+                    <li>
+                        <img class="img-medium" src="images/banners/bn3.jpg" alt="#">
+                    </li>
+                    <li>
+                        <img class="img-medium" src="images/banners/bn2.jpg" alt="#">
+                    </li>
+                    <li>
+                        <img class="img-medium" src="images/banners/Banner1.jpg" alt="#">
+                    </li>
+                <?php } ?>
+            </ul>
         </div>
     </div>
     <ul class="main-nav tac">
