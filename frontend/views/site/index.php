@@ -12,8 +12,7 @@ $this->title = 'Sàn chung cư 24h';
                         /** @var $item \common\models\Banner */
                         ?>
                         <li>
-                            <img class="img-large" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
-                            <img class="img-medium" src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>">
+                            <img src="<?= $item->getImageLink() ?>" alt="<?= $item->name ?>" title="<?= $item->name ?>">
                         </li>
                     <?php }
                 } else { ?>
@@ -124,7 +123,7 @@ $this->title = 'Sàn chung cư 24h';
     <div id="main_da"></div>
     <div  class="main-project main-section">
         <div class="main-title tac ttu">
-            <span class="segoeui">Sanchungcu24h</span>
+            <h1 class="segoeui">Sanchungcu24h</h1>
             <h2 class="utm-trajan">Dự Án</h2>
         </div>
         <?php if (isset($duantop) && !empty($duantop)) {
@@ -165,7 +164,7 @@ $this->title = 'Sàn chung cư 24h';
                         /** @var $item \common\models\News */
                         ?>
                         <li class="grid4 wow fadeInUp" data-wow-delay=".5s">
-                            <img src="<?= $item->getImage() ?>" alt="#">
+                            <img style="height: 250px;" src="<?= $item->getImage() ?>" alt="<?= $item->title ?>" title="<?= $item->title ?>">
                             <?php if(!empty($item->title)){ ?>
                                 <a href="<?= Url::to(['site/detail-news','id'=>$item->id]) ?>"><?= $item->title ?></a>
                             <?php } ?>
